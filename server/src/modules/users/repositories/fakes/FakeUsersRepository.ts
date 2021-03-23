@@ -1,4 +1,5 @@
 import { uuid } from 'uuidv4';
+import { hash } from 'bcryptjs';
 
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
@@ -32,6 +33,8 @@ class UsersRepository implements IUsersRepository {
     const user = new User();
 
     Object.assign(user, { id: uuid() }, userData);
+
+    user.password = await hash(userData.password, 8);
 
     this.users.push(user);
 
