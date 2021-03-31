@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-ignore */
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import { injectable, inject } from 'tsyringe';
@@ -45,6 +46,7 @@ class AuthenticateUserService {
       expiresIn,
     });
 
+    // @ts-ignore
     delete user.password;
 
     return {
