@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-ignore */
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import { injectable, inject } from 'tsyringe';
@@ -41,13 +40,10 @@ class AuthenticateUserService {
 
     const { expiresIn, secret } = authConfig.jwt;
 
-    const token = sign({}, secret, {
+    const token = sign({}, secret || '', {
       subject: user.id,
       expiresIn,
     });
-
-    // @ts-ignore
-    delete user.password;
 
     return {
       user,
