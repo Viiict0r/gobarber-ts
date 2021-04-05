@@ -38,6 +38,8 @@ app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
   });
 });
 
+console.log(process.env.APP_SECRET);
+
 /** Keep It Simple & Stupid */
 
 app.listen(3333, () => {
