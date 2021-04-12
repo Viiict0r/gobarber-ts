@@ -70,8 +70,8 @@ class CreateAppointmentService {
       content: `Novo agendamento para dia ${dateFormatted}`,
     });
 
-    this.cacheProvider.invalidatePrefix(`
-    provider-appoinments:${provider_id}:${format(
+    await this.cacheProvider.invalidate(`
+    provider-appointments:${provider_id}:${format(
       appointmentDate,
       'yyyy-M-d',
     )}`);
